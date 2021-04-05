@@ -1,0 +1,158 @@
+#cloud-config
+apt:
+    preserve_sources_list: true
+    sources:
+      packer:
+        source: "deb [arch=amd64] https://apt.releases.hashicorp.com $RELEASE main"
+        key: |
+          -----BEGIN PGP PUBLIC KEY BLOCK-----
+
+          mQINBF60TuYBEADLS1MP7XrMlRkn1Y54cb2UclUMH8HkIRfBrhk5Leo9kNZc/2QD
+          LmdQbi3UbZkz0uVkHqbFDgV5lAnukCnxgr9BqnL0GJpO78le7gCCbM5bR4rTJ6Ar
+          OOtIKf25smGTIpbSwNdj8BOLqiExGFj/9L5X9S5kfq3vtuYt+lmxKkIrEPjSYnFR
+          TQ2mTL8RM932GJod/5VJ2+6YvrCjtPu5/rW02H1U2ZHiTtX6ZGnIvv/sprKyFRqT
+          x4Ib+o9XwXof/LuxTMpVwIHSzCYanH5hPc7yRGKzIntBS+dDom+h9smx7FTgpHwt
+          QRFGLtVoHXqON6nXTLFDkEzxr+fXq/bgB1Kc1TuzvoK601ztQGhhDaEPloKqNWM8
+          Ho7JU1RpnoWr5jOFTYiPM9uyCtFNsJmD9mt4K8sQQN7T2inR5Us0o510FqePRFeX
+          wOJUMi1CbeYqVHfKQ5cWYujcK8pv3l1a6dSBmFfcdxtwIoA16JzCrgsCeumTDvKu
+          hOiTctb28srL/9WwlijUzZy6R2BGBbhP937f2NbMS/rpby7M1WizKeo2tkKVyK+w
+          SUWSw6EtFJi7kRSkH7rvy/ysU9I2ma88TyvyOgIz1NRRXYsW7+brgwXnuJraOLaB
+          5aiuhlngKpTPvP9CFib7AW2QOXustMZ7pOUREmxgS4kqxo74CuFws163TwARAQAB
+          tFFIYXNoaUNvcnAgU2VjdXJpdHkgKEhhc2hpQ29ycCBQYWNrYWdlIFNpZ25pbmcp
+          IDxzZWN1cml0eStwYWNrYWdpbmdAaGFzaGljb3JwLmNvbT6JAk4EEwEIADgWIQTo
+          oDLglNjrTqGJ0nDaQYyIoyGfewUCXrRO5gIbAwULCQgHAgYVCgkICwIEFgIDAQIe
+          AQIXgAAKCRDaQYyIoyGfe6/WD/9dTM/1OSgbvSPpPJOOcn5L1nOKRBJpztr4V0ky
+          GoCDakIQ/sykbcuHXP79FGLzrM8zQOsbvVp/Z2lsWBnxkT8KWM+8LZxYToRGdZhr
+          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
+          =emKC
+          -----END PGP PUBLIC KEY BLOCK-----
+package_update: true
+packages:
+  - qemu-kvm
+  - qemu
+  - virt-manager
+  - libvirt-bin
+  - packer
+  - zip
+write_files:
+- content: |
+    {
+        "builders": [
+          {
+            "disk_compression": true,
+            "disk_discard": "unmap",
+            "disk_image": true,
+            "disk_interface": "virtio-scsi",
+            "disk_size": 5120,
+            "http_directory": "cloud-data",
+            "iso_checksum": "file:http://cloud-images.ubuntu.com/releases/bionic/release/SHA256SUMS",
+            "iso_url": "http://cloud-images.ubuntu.com/releases/bionic/release/ubuntu-18.04-server-cloudimg-amd64.img",
+            "memory": 2560,
+            "ssh_password": "packerpassword",
+            "ssh_username": "packer",
+            "type": "qemu",
+            "use_default_display": true,
+            "qemuargs": [
+              [
+                "-smbios",
+                "type=1,serial=ds=nocloud-net;instance-id=packer;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/"
+              ]
+            ]
+          }
+        ],
+        "provisioners": [
+          {
+            "type": "shell",
+            "execute_command": "sudo sh -c '{{ .Vars }} {{ .Path }}'",
+            "inline": [
+              "echo \"Initialize Cloud-init\"",
+              "cloud-init clean"
+            ]
+          },
+          {
+            "type": "shell",
+            "execute_command": "sudo sh -c '{{ .Vars }} {{ .Path }}'",
+            "inline": [
+              "echo \"Clean up\"",
+              "/usr/bin/apt-get clean",
+              "rm -r /etc/apparmor.d/cache/* /etc/apparmor.d/cache/.features /etc/netplan/50-cloud-init.yaml /etc/ssh/ssh_host* /etc/sudoers.d/90-cloud-init-users",
+              "/usr/bin/truncate --size 0 /etc/machine-id",
+              "/usr/bin/gawk -i inplace '/PasswordAuthentication/ { gsub(/yes/, \"no\") }; { print }' /etc/ssh/sshd_config",
+              "rm -r /root/.ssh",
+              "rm /snap/README",
+              "find /usr/share/netplan -name __pycache__ -exec rm -r {} +",
+              "rm -f /var/cache/pollinate/seeded /var/cache/snapd/* /var/cache/motd-news",
+              "rm -r /var/lib/cloud /var/lib/dbus/machine-id /var/lib/private /var/lib/systemd/timers /var/lib/systemd/timesync /var/lib/systemd/random-seed",
+              "rm /var/lib/ubuntu-release-upgrader/release-upgrade-available",
+              "rm /var/lib/update-notifier/fsck-at-reboot /var/lib/update-notifier/hwe-eol",
+              "find /var/log -type f -exec rm {} +",
+              "for i in group gshadow passwd shadow subuid subgid; do mv /etc/$i- /etc/$i; done",
+              "rm -r /home/packer",
+              "/bin/sync",
+              "/sbin/fstrim -v /",
+              "rm -r /tmp/* /tmp/.*-unix /var/tmp/*"
+            ]
+          }
+        ]
+      }
+  path: /home/azureuser/packer.json
+- content: |
+    #!/bin/sh -eux
+
+    # Wait for cloud-init to complete
+    cloud-init status -w
+
+    # Packer build
+    packer build packer.json
+
+    # Convert to VHDX
+    qemu-img convert -f qcow2 ./output-qemu/packer-qemu -O vhdx -o subformat=dynamic baseimage.vhdx
+
+    # Zip 
+    zip baseimage.vhdx.zip ./baseimage.vhdx
+  path: /home/azureuser/build-image.sh
+- content: |
+    #cloud-config
+    ssh_pwauth: true
+    users:
+      - name: packer
+        sudo: ALL=(ALL) NOPASSWD:ALL
+        groups: users, admin
+        passwd: $6$rounds=4096$XxQGokSw4FI8unZF$lAnQ0ZSMuCvSlv.rFjcxOpyAZr/ZDwtaI/X6BSSH0wtKngvprmgr9nvSMV/dBzE.TJ7Tvd8y0.T50dW5Bi1vf/
+        lock_passwd: false
+    apt:
+        preserve_sources_list: true
+    package_update: false
+  path: /home/azureuser/cloud-data/user-data
+- path: /home/azureuser/cloud-data/meta-data

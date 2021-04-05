@@ -1,0 +1,9 @@
+version: 2
+ethernets:
+  eth0:
+    dhcp4: false
+    addresses: [_IP_ADDRESSES_]
+    gateway4: _GATEWAY_
+    nameservers:
+      addresses: 
+      - _DNS_SERVER_

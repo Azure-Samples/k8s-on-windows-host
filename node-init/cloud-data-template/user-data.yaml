@@ -1,0 +1,22 @@
+#cloud-config
+
+users:
+  - name: clusteruser
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    groups: sudo
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - _CLUSTERUSER_KEY_
+
+write_files:
+- content: |
+    resolvconf=NO
+  path: /etc/resolvconf.conf
+- content: |
+    make_resolv_conf() { :; }
+  path: /etc/dhcp/dhclient-enter-hooks.d/leave_my_resolv_conf_alone
+
+runcmd:
+  - rm /etc/resolv.conf && echo "nameserver 8.8.8.8" > /etc/resolv.conf && chattr +i /etc/resolv.conf
+  - echo "ListenAddress `ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1`" >> /etc/ssh/sshd_config
+  - service ssh restart

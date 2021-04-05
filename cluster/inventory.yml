@@ -1,0 +1,34 @@
+all:
+  hosts:
+    main:
+      ansible_host: 172.17.1.100
+      main_ip: 172.17.1.100
+      pair: worker
+    worker:
+      ansible_host: 172.17.1.101
+      worker_ip: 172.17.1.101
+      pair: main
+    worker2:
+      ansible_host: 172.17.1.102
+      worker_ip: 172.17.1.102
+      pair: main
+  children:
+    mains:
+      hosts:
+        main:
+    workers:
+      hosts:
+        worker:
+        worker2:
+    vmlinux:
+      hosts:
+        main:
+        worker:
+        worker2:
+  vars:
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+    ansible_user: "clusteruser"
+    ansible_ssh_private_key_file: "~/.ssh/ansible_rsa"
+    k8s_version: "1.19.4-00"
+    main: "172.17.1.100"
+    cluster_worker_ip: "172.17.1.101"

@@ -1,3 +1,14 @@
+---
+page_type: sample
+languages:
+- bash
+- powershell
+- yaml
+- json
+products:
+- windows
+---
+
 # Deploy a bare-metal cluster with a Custom VM Image on a Hyper-V enabled Windows Host with Ansible and kubeadm
 
 This sample demonstrates how to leverage technologies like packer, cloud-init and ansible to easily configure a Kubernetes cluster at the edge on a Windows host.
